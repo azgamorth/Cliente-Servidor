@@ -1,7 +1,10 @@
 // Nombre del Programa: Aplicación Cliente-Servidor con Chats Privados (Cliente 2)
 // Creado por: Daniel Vargas
-// Descripción: Este programa es una parte de una arquitectura cliente-servidor en la que varios clientes pueden conectarse al servidor. Los clientes pueden ver una lista de otros clientes conectados y abrir chats privados con ellos. Los mensajes que se envían y reciben se gestionan a través del servidor y se muestran en una interfaz gráfica de chat privado.
-// Ejemplo: Un cliente 2 se conecta al servidor, visualiza una lista de clientes conectados y selecciona uno para iniciar una conversación privada. Los mensajes enviados por ambos clientes se muestran en sus respectivas ventanas de chat privado.
+// Descripción: Este programa es una parte de una arquitectura cliente-servidor en la que varios clientes pueden conectarse al servidor. 
+// Los clientes pueden ver una lista de otros clientes conectados y abrir chats privados con ellos. Los mensajes que se envían y reciben
+// se gestionan a través del servidor y se muestran en una interfaz gráfica de chat privado.
+// Ejemplo: Un cliente 2 se conecta al servidor, visualiza una lista de clientes conectados y selecciona uno para iniciar una conversación privada. 
+// Los mensajes enviados por ambos clientes se muestran en sus respectivas ventanas de chat privado.
 
 // Librerías usadas:
 // - javax.swing: Para crear la interfaz gráfica (ventanas, botones, campos de texto).
