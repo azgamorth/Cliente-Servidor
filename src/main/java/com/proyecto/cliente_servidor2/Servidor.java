@@ -1,3 +1,12 @@
+// Nombre del Programa: Servidor de Aplicación Cliente-Servidor con Chats Privados
+// Creado por: Daniel Vargas
+// Descripción: Este programa implementa el lado del servidor en una arquitectura cliente-servidor, donde los clientes pueden conectarse al servidor, ver una lista de otros clientes conectados y enviar mensajes privados entre ellos. El servidor se encarga de gestionar las conexiones, mantener la lista de clientes conectados y redirigir los mensajes privados al cliente correspondiente.
+// Ejemplo: El servidor acepta conexiones de clientes. Cada cliente envía su nombre al conectarse, y el servidor actualiza la lista de clientes conectados. Los clientes pueden enviar mensajes privados a otros clientes, y el servidor los redirige al destinatario correspondiente.
+// Librerías usadas:
+// - java.io: Para manejar las entradas y salidas a través de las conexiones de red.
+// - java.net: Para manejar las conexiones de red mediante sockets.
+// - java.util: Para gestionar las colecciones de clientes y sus respectivas conexiones.
+
 package com.proyecto.cliente_servidor2;
 
 import java.io.*;
@@ -34,6 +43,7 @@ public class Servidor {
         private PrintWriter salidaCliente;
         private String nombreCliente;
 
+        // Constructor que recibe el socket del cliente
         public ClienteHandler(Socket socket) {
             this.socket = socket;
         }
@@ -71,6 +81,7 @@ public class Servidor {
                     actualizarClientesConectados();
                 }
 
+                // Cerrar las conexiones
                 entrada.close();
                 salidaCliente.close();
                 socket.close();
@@ -92,9 +103,10 @@ public class Servidor {
                 salidaDestinatario = clientes.get(destinatario);
             }
 
+            // Enviar el mensaje al destinatario y al remitente
             if (salidaDestinatario != null) {
                 salidaDestinatario.println("Privado:" + nombreCliente + ":" + textoMensaje);
-                salidaCliente.println("Privado:" + nombreCliente + ":" + textoMensaje);  // También envía al remitente
+                salidaCliente.println("Privado:" + nombreCliente + ":" + textoMensaje); // También envía al remitente
             }
         }
 
