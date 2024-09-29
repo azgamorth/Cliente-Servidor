@@ -1,7 +1,10 @@
 // Nombre del Programa: Servidor de Aplicación Cliente-Servidor con Chats Privados
 // Creado por: Daniel Vargas
-// Descripción: Este programa implementa el lado del servidor en una arquitectura cliente-servidor, donde los clientes pueden conectarse al servidor, ver una lista de otros clientes conectados y enviar mensajes privados entre ellos. El servidor se encarga de gestionar las conexiones, mantener la lista de clientes conectados y redirigir los mensajes privados al cliente correspondiente.
-// Ejemplo: El servidor acepta conexiones de clientes. Cada cliente envía su nombre al conectarse, y el servidor actualiza la lista de clientes conectados. Los clientes pueden enviar mensajes privados a otros clientes, y el servidor los redirige al destinatario correspondiente.
+// Descripción: Este programa implementa el lado del servidor en una arquitectura cliente-servidor, donde los clientes pueden conectarse al servidor, 
+// ver una lista de otros clientes conectados y enviar mensajes privados entre ellos. El servidor se encarga de gestionar las conexiones, 
+// mantener la lista de clientes conectados y redirigir los mensajes privados al cliente correspondiente.
+// Ejemplo: El servidor acepta conexiones de clientes. Cada cliente envía su nombre al conectarse, y el servidor actualiza la lista de clientes conectados. 
+// Los clientes pueden enviar mensajes privados a otros clientes, y el servidor los redirige al destinatario correspondiente.
 // Librerías usadas:
 // - java.io: Para manejar las entradas y salidas a través de las conexiones de red.
 // - java.net: Para manejar las conexiones de red mediante sockets.
