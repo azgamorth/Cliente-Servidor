@@ -1,3 +1,20 @@
+// Nombre del Programa: Aplicación Cliente-Servidor con Chats Privados (Cliente 2)
+// Creado por: Daniel Vargas
+// Descripción: Este programa es una parte de una arquitectura cliente-servidor en la que varios clientes pueden conectarse al servidor. Los clientes pueden ver una lista de otros clientes conectados y abrir chats privados con ellos. Los mensajes que se envían y reciben se gestionan a través del servidor y se muestran en una interfaz gráfica de chat privado.
+// Ejemplo: Un cliente 2 se conecta al servidor, visualiza una lista de clientes conectados y selecciona uno para iniciar una conversación privada. Los mensajes enviados por ambos clientes se muestran en sus respectivas ventanas de chat privado.
+
+// Librerías usadas:
+// - javax.swing: Para crear la interfaz gráfica (ventanas, botones, campos de texto).
+// - java.net: Para manejar las conexiones de red mediante sockets.
+// - java.io: Para enviar y recibir mensajes a través de las conexiones de red.
+
+// Funciones principales del código:
+// 1. mostrarVentanaPrincipal(): Muestra la ventana principal donde el usuario puede ver la lista de clientes conectados y seleccionar uno para iniciar un chat privado.
+// 2. abrirChatConClienteSeleccionado(): Abre una ventana de chat privado con el cliente seleccionado de la lista.
+// 3. conectarAlServidor(): Establece la conexión con el servidor, envía el nombre del cliente y escucha los mensajes del servidor.
+// 4. actualizarListaClientesConectados(): Actualiza la lista de clientes conectados cada vez que el servidor envía la información.
+// 5. actualizarChatPrivado(): Muestra los mensajes recibidos en la ventana de chat privado.
+
 package com.proyecto.cliente_servidor2;
 
 import javax.swing.*;
@@ -8,19 +25,20 @@ import java.io.*;
 import java.net.*;
 
 public class Cliente2 {
-    private JFrame frame;
-    private JList<String> listaClientesConectados;
-    private DefaultListModel<String> listModel;
-    private JTextField textFieldMensaje;
-    private JTextArea textAreaChat;
-    private JTextArea textAreaChatPrivado;
+    private JFrame frame; // Ventana principal del cliente
+    private JList<String> listaClientesConectados; // Lista para mostrar los clientes conectados
+    private DefaultListModel<String> listModel; // Modelo para la lista de clientes conectados
+    private JTextField textFieldMensaje; // Campo para escribir mensajes
+    private JTextArea textAreaChat; // Área para mostrar el chat principal
+    private JTextArea textAreaChatPrivado; // Área para mostrar el chat privado
 
-    private Socket socket;
-    private BufferedReader entrada;
-    private PrintWriter salida;
-    private String nombreCliente;
-    private String clienteSeleccionado;
+    private Socket socket; // Socket para conectarse al servidor
+    private BufferedReader entrada; // Para leer los mensajes entrantes
+    private PrintWriter salida; // Para enviar mensajes
+    private String nombreCliente; // Nombre del cliente
+    private String clienteSeleccionado; // Cliente seleccionado para chat privado
 
+    // Función principal para iniciar el programa
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             try {
@@ -32,11 +50,12 @@ public class Cliente2 {
         });
     }
 
+    // Constructor del cliente
     public Cliente2() {
         initialize();
     }
 
-    // Método para mostrar la ventana principal
+    // Función que muestra la ventana principal y pide al usuario su nombre
     public void mostrarVentanaPrincipal() {
         // Solicitar el nombre del cliente antes de abrir el chat
         nombreCliente = JOptionPane.showInputDialog(frame, "Introduce tu nombre:", "Login", JOptionPane.PLAIN_MESSAGE);
@@ -56,6 +75,7 @@ public class Cliente2 {
         });
     }
 
+    // Función que inicializa la ventana principal y los componentes gráficos
     private void initialize() {
         // Configuración básica del JFrame (ventana principal)
         frame = new JFrame("Cliente 2 - Lista de Clientes Conectados");
@@ -81,7 +101,7 @@ public class Cliente2 {
         });
     }
 
-    // Método para abrir el chat con el cliente seleccionado
+    // Función para abrir un chat privado con el cliente seleccionado
     private void abrirChatConClienteSeleccionado() {
         clienteSeleccionado = listaClientesConectados.getSelectedValue();
         if (clienteSeleccionado != null && !clienteSeleccionado.isEmpty()) {
@@ -131,7 +151,7 @@ public class Cliente2 {
         }
     }
 
-    // Método para conectar al servidor y recibir la lista de clientes conectados
+    // Función para conectar al servidor y recibir la lista de clientes conectados
     private void conectarAlServidor() {
         try {
             // Conectarse al servidor en localhost y puerto 8080
@@ -168,7 +188,7 @@ public class Cliente2 {
         }
     }
 
-    // Método para actualizar la lista de clientes conectados
+    // Función para actualizar la lista de clientes conectados
     private void actualizarListaClientesConectados(String mensaje) {
         // Limpiar el modelo de la lista
         listModel.clear();
@@ -180,7 +200,7 @@ public class Cliente2 {
         }
     }
 
-    // Método para actualizar el historial del chat privado
+    // Función para actualizar el historial del chat privado
     private void actualizarChatPrivado(String mensaje) {
         // Separar la información del mensaje (Privado:remitente:mensaje)
         String[] partes = mensaje.split(":");
